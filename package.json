@@ -1,0 +1,10 @@
+{
+    "name" : "Lexicontra",
+    "description" : "Anagram Multiplayer Game",
+    "version" : "0.0.1",
+    "dependencies": {
+        "express": "4.10.6",
+        "socket.io":"1.2.1",
+        "morgan":"1.5.0"
+    }
+}

@@ -1,0 +1,47 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    margin: 0px auto;
+    text-align: center;
+    width: 100%;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+    font-size:xx-large;
+}
+.titleWrapper {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    position: absolute;
+    height: 50%;
+    width: 50%;
+    margin: auto;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+}
+
+.createGameWrapper  {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    position: absolute;
+    height: 50%;
+    width: 50%;
+    margin: auto;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+}
+
+
+#gameArea {
+    height: 100%;
+    width: 100%;
+}
+

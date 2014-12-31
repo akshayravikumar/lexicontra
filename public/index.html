@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+
+    <!-- Ensure that everything scales appropriately on a mobile device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+    <!-- Let's borrow a cool looking Font from Google -->
+    <!--link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'-->
+
+    <link href="css/styles.css" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <!--script src="http://code.jquery.com/jquery-1.11.1.js"></script-->
+    <script src = "https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+</head>
+
+<body>
+
+
+    <div id="gameArea">
+        <!-- This is where the templates defined below will be used -->
+    </div>
+
+    <!-- Main Title Screen that appears when the page loads for the first time -->
+    <script id="intro-screen-template" type="text/template">
+
+        <div class="titleWrapper">
+
+            <div class="title">
+                LEXICONTRA
+            </div> 
+            <br/>
+            <form>
+              <div class="form-group">
+                <label for="inputPlayerName">Your Username:</label>
+                <input type="text" class="form-control" id="inputPlayerName" autocomplete="off" required>
+              </div> 
+              <button type="button" class="btn btn-default" id = "btnCreateGame">Create Game</button>
+              <div class="form-group"> <br/> <br/> <br/>
+                <label for="inputGameId">Game ID:</label>
+                <input type="text" class="form-control" id="inputGameId">
+              </div>
+              <button type="button" class="btn btn-default" id = "btnJoinGame">Join This Game</button>
+            </form>
+        </div>
+
+    </script>
+
+    <script id="new-game-template" type="text/template">
+        <div class="createGameWrapper">
+            Welcome to game <div id="spanNewGameCode" class="gameId">Error!</div>!
+            <div class="info">Invite your friends to <div id="gameURL" class="infoBig">Error!</div> and ask them to use the ID above.</div>
+            
+
+            <div id="playersWaiting"></div>
+        </div>
+    </script>
+
+    <script id="game-template" type="text/template">
+        <div id="wordArea">
+            <div id="hostWord">5</div>
+        </div>
+        <div id="playerScores">
+            <div id="player1Score" class="playerScore">
+                <span class="score">0</span><span class="playerName">Player 1</span> <br/>
+                <span class="words">You have no words yet.</span>
+            </div>
+            <div id="player2Score" class="playerScore">
+                <span class="playerName">Player 2</span><span class="score">0</span> <br/>
+                <span class="words">You have no words yet.</span>
+            </div>
+        </div>
+    </script>
+
+    <script>
+    (function() {
+    $('form > input').keyup(function() {
+            if ($.tr$("#inputPlayerName").val().length==0) {
+                $('#btnCreateGame').attr('disabled', 'disabled');
+            } else {
+                $('#btnCreateGame').removeAttr('disabled');
+            }
+        });
+    })()
+    </script>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
