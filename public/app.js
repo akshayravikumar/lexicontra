@@ -15,7 +15,6 @@ jQuery(function($){
         init: function() {
             IO.socket = io.connect();
             IO.bindEvents();
-            console.log("initializing IO");
         },
         /**
          * While connected, Socket.IO will listen to the following events emitted
@@ -25,11 +24,26 @@ jQuery(function($){
             IO.socket.on('connected', IO.onConnected );
             IO.socket.on('newGameCreated', IO.onNewGameCreated );
             IO.socket.on('playerJoinedRoom', IO.playerJoinedRoom );
+            IO.socket.on('errorAlert', IO.errorAlert );
+        },
+
+        playerJoinedRoom : function(data) {
+            // When a player joins a room, do the updateWaitingScreen funciton.
+            // There are two versions of this function: one for the 'host' and
+            // another for the 'player'.
+            //
+            // So on the 'host' browser window, the App.Host.updateWiatingScreen function is called.
+            // And on the player's browser, App.Player.updateWaitingScreen is called.
+            App.$gameArea.html(App.$templateNewGame);
+            $('#gameURL').text(window.location.href);
+            // Show the gameId / room id on screen
+            $('#spanNewGameCode').text(data.gameId);
+            alert("welcome!");
+            App.Player.updateWaitingScreen(data);
         },
 
         onConnected : function(data) {
             // Cache a copy of the client's socket.IO session ID on the App
-            alert(data.message);
             //App.mySocketId = IO.socket.engine.id;
             //alert(App.mySocketId + " IS THE ID");
         },
@@ -37,7 +51,11 @@ jQuery(function($){
 
         // what happens when the game is created, we have the game id and socket it
         onNewGameCreated : function(data) {
-            App.Host.gameInit(data);
+            App.Player.gameInit(data);
+        },
+
+        errorAlert : function(data) {
+            alert(data.message);
         }
 
     };
@@ -76,20 +94,22 @@ jQuery(function($){
             App.$templateNewGame = $('#new-game-template').html();
         },
 
+        
+
         bindEvents: function () {
             // Host
             console.log("bind events happening");
             //App.$doc.on('click', '#btnCreateGame', App.Host.onCreateClick);
-            $('#btnCreateGame').click(App.Host.onCreateClick);
+            $('#btnCreateGame').click(App.Player.onCreateClick);
             // Player
-            //App.$doc.on('click', '#btnJoinGame', App.Player.onJoinClick);
+            App.$doc.on('click', '#btnJoinGame', App.Player.onJoinClick);
         },
 
         showInitScreen: function() {
             App.$gameArea.html(App.$templateIntroScreen);
         },
 
-        Host : {
+        Player : {
               /**
              * Contains references to player data
              */
@@ -102,25 +122,70 @@ jQuery(function($){
 
             // first thing that happens when clicked.
             onCreateClick: function () {
-                IO.socket.emit('hostCreateNewGame');
+                var data = {
+                    playerName : $('#inputPlayerName').val() || 'anon'
+                };
+                IO.socket.emit('hostCreateNewGame', data);
             },
 
+
+
+
+
+            onJoinClick: function () {
+                 var data = {
+                    gameId : $('#inputGameId').val(),
+                    playerName : $('#inputPlayerName').val() || 'anon'
+                };
+                // Send the gameId and playerName to the server
+                IO.socket.emit('playerJoinGame', data);
+                App.myRole = 'Player';
+                App.Player.myName = data.playerName;
+                // Display the Join Game HTML on the player's screen.
+                App.Player.displayNewGameScreen();
+            },
+
+            updateWaitingScreen: function(data) {
+                // If this is a restarted game, show the screen.
+                /*if ( App.Host.isNewGame ) {
+                    App.Host.displayNewGameScreen();
+                }*/
+                // Update host screen
+                var postText = "";
+                for (var i = 0; i<data.allPlayerNames.length ; i++) {
+                    postText = postText + data.allPlayerNames[i].playerName + "\n";
+                }
+                 $('#playersWaiting').text(postText);
+
+                // Store the new player's data on the Host.
+                App.Player.players.push(data);
+
+                // Increment the number of players in the room
+                App.Player.numPlayersInRoom += 1;
+                // If two players have joined, start the game!
+//                if (App.Host.numPlayersInRoom === 2) {
+ //                   // console.log('Room is full. Almost ready!');
+//          
+ //                   // Let the server know that two players are present.
+ //                   IO.socket.emit('hostRoomFull',App.gameId);
+ //               }
+            },
 
             // now, we have all the necessary game id's and shit
             gameInit: function (data) {
                 App.gameId = data.gameId;
                 App.mySocketId = data.mySocketId;
                 App.myRole = 'Host';
-                App.Host.numPlayersInRoom = 0;
+                App.Player.numPlayersInRoom = 0;
 
-                App.Host.displayNewGameScreen();
+                App.Player.displayNewGameScreen();
                 alert("Game started with ID: " + App.gameId + ' by host: ' + App.mySocketId);
             },
 
             displayNewGameScreen : function() {
                 // Fill the game screen with the appropriate HTML
+
                 App.$gameArea.html(App.$templateNewGame);
-                //alert(io.sockets.adapter.rooms + "are all the rooms now");
 
                 // Display the URL on screen
                 $('#gameURL').text(window.location.href);

@@ -46,12 +46,12 @@
                 <label for="inputPlayerName">Your Username:</label>
                 <input type="text" class="form-control" id="inputPlayerName" autocomplete="off" required>
               </div> 
-              <button type="button" class="btn btn-default" id = "btnCreateGame">Create Game</button>
+              <button type="button" class="btn btn-default" id = "btnCreateGame" disabled = "disabled">Create Game</button>
               <div class="form-group"> <br/> <br/> <br/>
                 <label for="inputGameId">Game ID:</label>
                 <input type="text" class="form-control" id="inputGameId">
               </div>
-              <button type="button" class="btn btn-default" id = "btnJoinGame">Join This Game</button>
+              <button type="button" class="btn btn-default" id = "btnJoinGame" disabled = "disabled">Join This Game</button>
             </form>
         </div>
 
@@ -82,18 +82,24 @@
             </div>
         </div>
     </script>
-
     <script>
-    (function() {
-    $('form > input').keyup(function() {
-            if ($.tr$("#inputPlayerName").val().length==0) {
-                $('#btnCreateGame').attr('disabled', 'disabled');
+    $(document).ready(function() {
+     $('input').keyup(function() {
+        if($('#inputPlayerName').val().trim().length != 0) {
+           $('#btnCreateGame').removeAttr('disabled');
+            if($('#inputGameId').val().trim().length != 0) {
+                   $('#btnJoinGame').removeAttr('disabled');
             } else {
-                $('#btnCreateGame').removeAttr('disabled');
-            }
-        });
-    })()
+                    $('#btnJoinGame').attr('disabled','disabled');
+                }
+        } else {
+            $('#btnCreateGame').attr('disabled','disabled');
+            $('#btnJoinGame').attr('disabled','disabled');
+        }
+     });
+ });
     </script>
+
 
     <script src="app.js"></script>
 
