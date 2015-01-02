@@ -34,11 +34,14 @@ jQuery(function($){
             //
             // So on the 'host' browser window, the App.Host.updateWiatingScreen function is called.
             // And on the player's browser, App.Player.updateWaitingScreen is called.
-            App.$gameArea.html(App.$templateNewGame);
-            $('#gameURL').text(window.location.href);
-            // Show the gameId / room id on screen
-            $('#spanNewGameCode').text(data.gameId);
-            alert("welcome!");
+            //App.$gameArea.html(App.$templateNewGame);
+            if (App.myRole != 'Host') {
+                App.$gameArea.html(App.$templateNewGame);
+                $('#gameURL').text(window.location.href);
+                // Show the gameId / room id on screen
+                $('#spanNewGameCode').text(data.gameId);
+            }
+            
             App.Player.updateWaitingScreen(data);
         },
 
@@ -52,6 +55,7 @@ jQuery(function($){
         // what happens when the game is created, we have the game id and socket it
         onNewGameCreated : function(data) {
             App.Player.gameInit(data);
+            App.Player.updateWaitingScreen(data);
         },
 
         errorAlert : function(data) {
@@ -86,7 +90,6 @@ jQuery(function($){
 
         cacheElements: function () {
             App.$doc = $(document);
-
             // Templates
             App.$gameArea = $('#gameArea');
             App.$templateIntroScreen = $('#intro-screen-template').html();
@@ -142,7 +145,7 @@ jQuery(function($){
                 App.myRole = 'Player';
                 App.Player.myName = data.playerName;
                 // Display the Join Game HTML on the player's screen.
-                App.Player.displayNewGameScreen();
+                //App.Player.displayNewGameScreen();
             },
 
             updateWaitingScreen: function(data) {
@@ -179,7 +182,10 @@ jQuery(function($){
                 App.Player.numPlayersInRoom = 0;
 
                 App.Player.displayNewGameScreen();
-                alert("Game started with ID: " + App.gameId + ' by host: ' + App.mySocketId);
+                var r= $('<input type="button" value="new button"/>');
+                $("#hostSubmit").append(r);
+                //alert("Game started with ID: " + App.gameId + ' by host: ' + App.mySocketId);
+                App.Player.updateWaitingScreen(data);
             },
 
             displayNewGameScreen : function() {
