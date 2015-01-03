@@ -33,7 +33,7 @@ function hostCreateNewGame(data) {
     var data = {playerName: data.playerName, mySocketId: this.id};
     roomInfo[thisGameId] = [data];
     this.emit('newGameCreated', {gameId: thisGameId, mySocketId: this.id, allPlayerNames:roomInfo[thisGameId]});
-};
+}
 
 function randomString(length, chars) {
     var result = '';
@@ -42,7 +42,8 @@ function randomString(length, chars) {
 }
 
 function hostStartGame(data) {
-    io.sockets.in(data.gameId).emit('gameStarted', data);
+    console.log("game " + data + " has started!");
+    io.sockets.in(data).emit('gameStarted', data);
 }
 
 function playerJoinGame(data) {

@@ -15,6 +15,7 @@ html, body {
     font-size:xx-large;
     color:#800000;
     font-size: 600%;
+    display: inline;
 
 }
 
@@ -35,7 +36,9 @@ html, body {
     top: 0;
     right: 0;
 }
-
+.infoBig {
+    font-size:300%;
+}
 .createGameWrapper  {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;

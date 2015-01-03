@@ -46,7 +46,7 @@ jQuery(function($){
         },
 
         gameStarted : function(data) {
-            App.$gameArea.html(App.$hostGame);
+            App.$gameArea.html(App.$gameScreen);
         },
 
         onConnected : function(data) {
@@ -97,7 +97,7 @@ jQuery(function($){
             // Templates
             App.$gameArea = $('#gameArea');
             App.$templateIntroScreen = $('#intro-screen-template').html();
-            App.$hostGame = $('#game-template').html();
+            App.$gameScreen = $('#game-template').html();
             App.$templateNewGame = $('#new-game-template').html();
         },
 
@@ -107,7 +107,8 @@ jQuery(function($){
             $('#btnCreateGame').click(App.Player.onCreateClick);
             // Player
             $('#btnJoinGame').click(App.Player.onJoinClick);
-            $('#btnStartGame').click(App.Player.onStartClick);
+            //$('#btnClickStart').click(App.Player.onStartClick);
+            App.$doc.on('click', '#btnClickStart',App.Player.onStartClick);
         },
 
         showInitScreen: function() {
@@ -134,8 +135,8 @@ jQuery(function($){
             },
 
             onStartClick: function () {
-                alert("clicked");
                 IO.socket.emit('hostStartGame',App.gameId);
+                alert("emitted");
             },
 
 
@@ -187,7 +188,7 @@ jQuery(function($){
                // var r= $('<input type="button" id = "btnStartGame" value="Start Game!"/>');
                 //$("#hostSubmit").append(r);
                 //alert("Game started with ID: " + App.gameId + ' by host: ' + App.mySocketId);
-                $('#btnStartGame').removeAttr('disabled');
+                $('#btnClickStart').removeAttr('disabled');
                 App.Player.updateWaitingScreen(data);
             },
 
