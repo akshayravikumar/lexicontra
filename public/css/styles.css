@@ -3,6 +3,7 @@ html, body {
     width: 100%;
     margin: 0;
     padding: 0;
+    background-image: url("/images/background.png");
 }
 
 .title {
@@ -10,9 +11,18 @@ html, body {
     text-align: center;
     width: 100%;
     font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 300;
+    font-weight: 500;
     font-size:xx-large;
+    color:#800000;
+    font-size: 600%;
+
 }
+
+.labelForm {
+    font-size:x-large;
+}
+
+
 .titleWrapper {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;

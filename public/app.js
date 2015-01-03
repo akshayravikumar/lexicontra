@@ -25,6 +25,7 @@ jQuery(function($){
             IO.socket.on('newGameCreated', IO.onNewGameCreated );
             IO.socket.on('playerJoinedRoom', IO.playerJoinedRoom );
             IO.socket.on('errorAlert', IO.errorAlert );
+            IO.socket.on('gameStarted', IO.gameStarted);
         },
 
         playerJoinedRoom : function(data) {
@@ -34,7 +35,6 @@ jQuery(function($){
             //
             // So on the 'host' browser window, the App.Host.updateWiatingScreen function is called.
             // And on the player's browser, App.Player.updateWaitingScreen is called.
-            //App.$gameArea.html(App.$templateNewGame);
             if (App.myRole != 'Host') {
                 App.$gameArea.html(App.$templateNewGame);
                 $('#gameURL').text(window.location.href);
@@ -43,6 +43,10 @@ jQuery(function($){
             }
             
             App.Player.updateWaitingScreen(data);
+        },
+
+        gameStarted : function(data) {
+            App.$gameArea.html(App.$hostGame);
         },
 
         onConnected : function(data) {
@@ -100,12 +104,10 @@ jQuery(function($){
         
 
         bindEvents: function () {
-            // Host
-            console.log("bind events happening");
-            //App.$doc.on('click', '#btnCreateGame', App.Host.onCreateClick);
             $('#btnCreateGame').click(App.Player.onCreateClick);
             // Player
-            App.$doc.on('click', '#btnJoinGame', App.Player.onJoinClick);
+            $('#btnJoinGame').click(App.Player.onJoinClick);
+            $('#btnStartGame').click(App.Player.onStartClick);
         },
 
         showInitScreen: function() {
@@ -131,8 +133,10 @@ jQuery(function($){
                 IO.socket.emit('hostCreateNewGame', data);
             },
 
-
-
+            onStartClick: function () {
+                alert("clicked");
+                IO.socket.emit('hostStartGame',App.gameId);
+            },
 
 
             onJoinClick: function () {
@@ -144,8 +148,6 @@ jQuery(function($){
                 IO.socket.emit('playerJoinGame', data);
                 App.myRole = 'Player';
                 App.Player.myName = data.playerName;
-                // Display the Join Game HTML on the player's screen.
-                //App.Player.displayNewGameScreen();
             },
 
             updateWaitingScreen: function(data) {
@@ -182,9 +184,10 @@ jQuery(function($){
                 App.Player.numPlayersInRoom = 0;
 
                 App.Player.displayNewGameScreen();
-                var r= $('<input type="button" value="new button"/>');
-                $("#hostSubmit").append(r);
+               // var r= $('<input type="button" id = "btnStartGame" value="Start Game!"/>');
+                //$("#hostSubmit").append(r);
                 //alert("Game started with ID: " + App.gameId + ' by host: ' + App.mySocketId);
+                $('#btnStartGame').removeAttr('disabled');
                 App.Player.updateWaitingScreen(data);
             },
 

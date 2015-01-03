@@ -36,22 +36,21 @@
     <script id="intro-screen-template" type="text/template">
 
         <div class="titleWrapper">
-
             <div class="title">
                 LEXICONTRA
             </div> 
             <br/>
             <form>
-              <div class="form-group">
-                <label for="inputPlayerName">Your Username:</label>
-                <input type="text" class="form-control" id="inputPlayerName" autocomplete="off" required>
+              <div class="form-group form-group-lg">
+                <label for="inputPlayerName" class="labelForm">Your Username:</label>
+                <input type="text" class="form-control" id="inputPlayerName" autocomplete="off">
               </div> 
-              <button type="button" class="btn btn-default" id = "btnCreateGame" disabled = "disabled">Create Game</button>
-              <div class="form-group"> <br/> <br/> <br/>
-                <label for="inputGameId">Game ID:</label>
+              <button type="button" class="btn btn-primary btn-lg btn-block" id = "btnCreateGame" disabled = "disabled">Create Game</button>
+              <div class="form-group form-group-lg"> <br/> <br/> <br/>
+                <label for="inputGameId" class="labelForm">Game ID:</label>
                 <input type="text" class="form-control" id="inputGameId">
               </div>
-              <button type="button" class="btn btn-default" id = "btnJoinGame" disabled = "disabled">Join This Game</button>
+              <button type="button" class="btn btn-primary btn-lg btn-block" id = "btnJoinGame" disabled = "disabled">Join This Game</button>
             </form>
         </div>
 
@@ -62,7 +61,7 @@
             Welcome to game <div id="spanNewGameCode" class="gameId">Error!</div>!
             <div class="info">Invite your friends to <div id="gameURL" class="infoBig">Error!</div> and ask them to use the ID above.</div>
             <div id="playersWaiting"></div>
-            <div id = "hostSubmit"></div>
+            <button type="button" class="btn btn-primary btn-lg btn-block" id = "btnStartGame" disabled = "disabled">Start Game</button>
         </div>
     </script>
 

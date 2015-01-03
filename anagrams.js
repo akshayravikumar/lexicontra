@@ -9,8 +9,9 @@ exports.initGame = function(sio, socket){
     gameSocket.emit('connected', { message: "You are connected!" });
     gameSocket.on('hostCreateNewGame', hostCreateNewGame);
     gameSocket.on('playerJoinGame', playerJoinGame);
+    gameSocket.on('hostStartGame', hostStartGame);
 }
-
+/*
 exports.endGame = function(sio,socket) {
     console.log("someone left the room!!");
     for (var key in roomInfo) {
@@ -21,7 +22,7 @@ exports.endGame = function(sio,socket) {
         }
     }
 }
-
+*/
 // second thing that happens when clicked
 function hostCreateNewGame(data) {
     // Create a unique Socket.IO Room
@@ -40,6 +41,9 @@ function randomString(length, chars) {
     return result;
 }
 
+function hostStartGame(data) {
+    io.sockets.in(data.gameId).emit('gameStarted', data);
+}
 
 function playerJoinGame(data) {
     console.log('Player ' + data.playerName + ' attempting to join game: ' + data.gameId );
