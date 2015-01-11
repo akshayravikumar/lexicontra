@@ -28,79 +28,58 @@
 <body>
 
 
-    <div id="gameArea">
+    <div id="mainArea" class = "titlePage">
         <!-- This is where the templates defined below will be used -->
     </div>
 
     <!-- Main Title Screen that appears when the page loads for the first time -->
-    <script id="intro-screen-template" type="text/template">
-
-        <div class="titleWrapper">
-            <div class="title">
-                LEXICONTRA
-            </div> 
-            <br/>
-            <form>
-              <div class="form-group form-group-lg">
-                <label for="inputPlayerName" class="labelForm">Your Username:</label>
-                <input type="text" class="form-control" id="inputPlayerName" autocomplete="off">
-              </div> 
-              <button type="button" class="btn btn-primary btn-lg btn-block" id = "btnCreateGame" disabled = "disabled">Create Game</button>
-              <div class="form-group form-group-lg"> <br/> <br/> <br/>
-                <label for="inputGameId" class="labelForm">Game ID:</label>
-                <input type="text" class="form-control" id="inputGameId">
+    <script id="intro-screen-template" type="text/template" >
+        <div class="container-fluid">
+        <div class="col-md-3"> </div>
+        <div class="col-md-6 vcenter"> 
+            <form id        =  "uploadForm"
+                 enctype   =  "multipart/form-data"
+                 action    =  "/pic_submit"
+                 method    =  "post"
+                 class      = "vcenter"
+                 >
+              <div class="form-group">
+                <label for="exampleInputEmail1">Upload your image here.</label>
+                <input type="file" id="inputImage" class="form-control" value="Upload Image" name="userPhoto" >
               </div>
-              <button type="button" class="btn btn-primary btn-lg btn-block" id = "btnJoinGame" disabled = "disabled">Join This Game</button>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Where was this taken?</label>
+                <input type="text" class="form-control" id="inputLocation" placeholder="City and State, Please" required>
+              </div>
+              <div class="form-group">
+                  <label for="comment">Share the story here.</label>
+                  <textarea class="form-control" rows="5" id="inputBody" required></textarea>
+                </div>
+              <button type="submit" id="submitImage" class="btn btn-default" disabled="disabled">Submit</button>
             </form>
         </div>
-
+        <div class="col-md-3">  </div>
+    </div>
     </script>
 
-    <script id="new-game-template" type="text/template">
-        <div class="createGameWrapper">
-            <center>
-            Welcome to game <div id="spanNewGameCode" class="infoBig"></div>
-            <div class="info">Invite your friends to <div id="gameURL" class="infoBig"><font size="30">Error!</font><</div> and ask them to use the ID above.</div> </br>
-            <div class="info"> Here are the players in the room right now. </div>
-            <div id="playersWaiting"></div> <br/>
-            <button type="button" class="btn btn-primary btn-lg btn-block" id = "btnClickStart" disabled = "disabled">Start Game</button>
-            </center>
-        </div>
-    </script>
-
-    <script id="game-template" type="text/template">
-        <div id="wordArea">
-            <div id="hostWord">5</div>
-        </div>
-        <div id="playerScores">
-            <div id="player1Score" class="playerScore">
-                <span class="score">0</span><span class="playerName">Player 1</span> <br/>
-                <span class="words">You have no words yet.</span>
-            </div>
-            <div id="player2Score" class="playerScore">
-                <span class="playerName">Player 2</span><span class="score">0</span> <br/>
-                <span class="words">You have no words yet.</span>
-            </div>
-        </div>
-    </script>
     <script>
-    $(document).ready(function() {
-     $('input').keyup(function() {
-        if($('#inputPlayerName').val().trim().length != 0) {
-           $('#btnCreateGame').removeAttr('disabled');
-            if($('#inputGameId').val().trim().length != 0) {
-                   $('#btnJoinGame').removeAttr('disabled');
-            } else {
-                    $('#btnJoinGame').attr('disabled','disabled');
-                }
-        } else {
-            $('#btnCreateGame').attr('disabled','disabled');
-            $('#btnJoinGame').attr('disabled','disabled');
-        }
-     });
- });
+    $(function() {
+         $("#inputImage").change(function (){
+           var fileName = $(this).val();
+           var val = fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase();
+           if (val == 'jpg' || val=='png') {
+                $("#submitImage").removeAttr("disabled");
+           }
+           else {
+            alert("This isn't an image...");
+            $("#submitImage").attr('disabled','disabled');
+            $(this).val('');
+           }
+         });
+      });
     </script>
-
+ 
+      
 
     <script src="app.js"></script>
 

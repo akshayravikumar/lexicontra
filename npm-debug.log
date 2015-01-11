@@ -1,0 +1,247 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'db-mysql' ]
+2 info using npm@2.1.14
+3 info using node@v0.10.33
+4 warn package.json Lexicontra@0.0.1 No repository field.
+5 silly cache add args [ 'db-mysql', null ]
+6 verbose cache add spec db-mysql
+7 silly cache add parsed spec { raw: 'db-mysql',
+7 silly cache add   scope: null,
+7 silly cache add   name: 'db-mysql',
+7 silly cache add   rawSpec: '',
+7 silly cache add   spec: '*',
+7 silly cache add   type: 'range' }
+8 verbose addNamed db-mysql@*
+9 silly addNamed semver.valid null
+10 silly addNamed semver.validRange *
+11 silly addNameRange { name: 'db-mysql', range: '*', hasData: false }
+12 silly mapToRegistry name db-mysql
+13 silly mapToRegistry using default registry
+14 silly mapToRegistry registry https://registry.npmjs.org/
+15 silly mapToRegistry uri https://registry.npmjs.org/db-mysql
+16 verbose addNameRange registry:https://registry.npmjs.org/db-mysql not in flight; fetching
+17 verbose request uri https://registry.npmjs.org/db-mysql
+18 verbose request no auth needed
+19 info attempt registry request try #1 at 16:41:04
+20 verbose request id 22a4f1404cc38cf3
+21 verbose etag "8VM29COBQ4LYE6FZ956BTHUS7"
+22 http request GET https://registry.npmjs.org/db-mysql
+23 http 304 https://registry.npmjs.org/db-mysql
+24 silly get cb [ 304,
+24 silly get   { date: 'Sun, 11 Jan 2015 00:41:04 GMT',
+24 silly get     server: 'Apache',
+24 silly get     via: '1.1 varnish',
+24 silly get     'last-modified': 'Sun, 11 Jan 2015 00:41:04 GMT',
+24 silly get     'cache-control': 'max-age=60',
+24 silly get     etag: '"8VM29COBQ4LYE6FZ956BTHUS7"',
+24 silly get     age: '0',
+24 silly get     'x-served-by': 'cache-lax1431-LAX',
+24 silly get     'x-cache': 'MISS',
+24 silly get     'x-cache-hits': '0',
+24 silly get     'x-timer': 'S1420936864.754768,VS0,VE171',
+24 silly get     vary: 'Accept',
+24 silly get     'content-length': '0',
+24 silly get     'keep-alive': 'timeout=10, max=50',
+24 silly get     connection: 'Keep-Alive' } ]
+25 verbose etag https://registry.npmjs.org/db-mysql from cache
+26 silly addNameRange number 2 { name: 'db-mysql', range: '*', hasData: true }
+27 silly addNameRange versions [ 'db-mysql',
+27 silly addNameRange   [ '0.4.0',
+27 silly addNameRange     '0.4.1',
+27 silly addNameRange     '0.4.2',
+27 silly addNameRange     '0.4.3',
+27 silly addNameRange     '0.4.4',
+27 silly addNameRange     '0.4.5',
+27 silly addNameRange     '0.4.6',
+27 silly addNameRange     '0.4.7',
+27 silly addNameRange     '0.4.8',
+27 silly addNameRange     '0.4.9',
+27 silly addNameRange     '0.5.0',
+27 silly addNameRange     '0.5.1',
+27 silly addNameRange     '0.5.2',
+27 silly addNameRange     '0.5.3',
+27 silly addNameRange     '0.5.4',
+27 silly addNameRange     '0.5.5',
+27 silly addNameRange     '0.5.6',
+27 silly addNameRange     '0.5.7',
+27 silly addNameRange     '0.5.8',
+27 silly addNameRange     '0.5.9',
+27 silly addNameRange     '0.6.0',
+27 silly addNameRange     '0.6.1',
+27 silly addNameRange     '0.6.2',
+27 silly addNameRange     '0.6.3',
+27 silly addNameRange     '0.6.4',
+27 silly addNameRange     '0.6.5',
+27 silly addNameRange     '0.6.6',
+27 silly addNameRange     '0.6.7',
+27 silly addNameRange     '0.6.8',
+27 silly addNameRange     '0.6.9',
+27 silly addNameRange     '0.7.0',
+27 silly addNameRange     '0.7.1',
+27 silly addNameRange     '0.7.2',
+27 silly addNameRange     '0.7.3',
+27 silly addNameRange     '0.7.4',
+27 silly addNameRange     '0.7.5',
+27 silly addNameRange     '0.7.6' ] ]
+28 verbose addNamed db-mysql@0.7.6
+29 silly addNamed semver.valid 0.7.6
+30 silly addNamed semver.validRange 0.7.6
+31 silly cache afterAdd db-mysql@0.7.6
+32 verbose afterAdd /Users/akshayravikumar/.npm/db-mysql/0.7.6/package/package.json not in flight; writing
+33 verbose afterAdd /Users/akshayravikumar/.npm/db-mysql/0.7.6/package/package.json written
+34 silly install resolved [ { name: 'db-mysql',
+34 silly install resolved     description: 'MySQL database bindings for Node.JS',
+34 silly install resolved     keywords:
+34 silly install resolved      [ 'database',
+34 silly install resolved        'db',
+34 silly install resolved        'native',
+34 silly install resolved        'binding',
+34 silly install resolved        'library',
+34 silly install resolved        'plugin',
+34 silly install resolved        'client',
+34 silly install resolved        'mysql',
+34 silly install resolved        'libmysql' ],
+34 silly install resolved     homepage: 'http://nodejsdb.org/db-mysql',
+34 silly install resolved     version: '0.7.6',
+34 silly install resolved     engines: { node: '>=0.4.1' },
+34 silly install resolved     maintainers: [ [Object] ],
+34 silly install resolved     bugs: { url: 'http://github.com/mariano/node-db-mysql/issues' },
+34 silly install resolved     licenses: [ [Object] ],
+34 silly install resolved     repositories: [ [Object] ],
+34 silly install resolved     main: './db-mysql',
+34 silly install resolved     scripts:
+34 silly install resolved      { install: 'node-waf configure build',
+34 silly install resolved        preuninstall: 'rm -rf build/*',
+34 silly install resolved        test: 'node-waf test',
+34 silly install resolved        doc: 'node-waf doc' },
+34 silly install resolved     devDependencies: { nodeunit: '*', nodelint: '*' },
+34 silly install resolved     _npmUser: { name: 'mariano', email: 'mgiglesias@gmail.com' },
+34 silly install resolved     _id: 'db-mysql@0.7.6',
+34 silly install resolved     dependencies: {},
+34 silly install resolved     _engineSupported: true,
+34 silly install resolved     _npmVersion: '1.0.104',
+34 silly install resolved     _nodeVersion: 'v0.6.1',
+34 silly install resolved     _defaultsLoaded: true,
+34 silly install resolved     dist:
+34 silly install resolved      { shasum: 'ff870557afb1ee4197712211d26b6a05394a7aeb',
+34 silly install resolved        tarball: 'http://registry.npmjs.org/db-mysql/-/db-mysql-0.7.6.tgz' },
+34 silly install resolved     directories: {},
+34 silly install resolved     _shasum: 'ff870557afb1ee4197712211d26b6a05394a7aeb',
+34 silly install resolved     _resolved: 'https://registry.npmjs.org/db-mysql/-/db-mysql-0.7.6.tgz',
+34 silly install resolved     _from: 'db-mysql@*',
+34 silly install resolved     repository:
+34 silly install resolved      { type: 'git',
+34 silly install resolved        url: 'https://github.com/mariano/node-db-mysql.git' },
+34 silly install resolved     readme: 'ERROR: No README data found!' } ]
+35 info install db-mysql@0.7.6 into /Users/akshayravikumar/Documents/hotw
+36 info installOne db-mysql@0.7.6
+37 verbose installOne of db-mysql to /Users/akshayravikumar/Documents/hotw not in flight; installing
+38 verbose lock using /Users/akshayravikumar/.npm/_locks/db-mysql-79acdcc8b2cb67c2.lock for /Users/akshayravikumar/Documents/hotw/node_modules/db-mysql
+39 silly install write writing db-mysql 0.7.6 to /Users/akshayravikumar/Documents/hotw/node_modules/db-mysql
+40 silly cache addNamed cb db-mysql@0.7.6
+41 verbose unbuild node_modules/db-mysql
+42 verbose gentlyRm vacuuming /Users/akshayravikumar/Documents/hotw/node_modules/db-mysql
+43 verbose tar unpack /Users/akshayravikumar/.npm/db-mysql/0.7.6/package.tgz
+44 verbose tar unpacking to /Users/akshayravikumar/Documents/hotw/node_modules/db-mysql
+45 verbose gentlyRm vacuuming /Users/akshayravikumar/Documents/hotw/node_modules/db-mysql
+46 silly gunzTarPerm modes [ '755', '644' ]
+47 silly gunzTarPerm extractEntry mysql-test-sync.js
+48 silly gunzTarPerm extractEntry mysql-test-insert.js
+49 silly gunzTarPerm extractEntry mysql-test-manual-query.js
+50 silly gunzTarPerm extractEntry README.md
+51 silly gunzTarPerm extractEntry tests.js
+52 silly gunzTarPerm extractEntry mysql-test-placeholder.js
+53 silly gunzTarPerm extractEntry mysql-test-no-connection.js
+54 silly gunzTarPerm extractEntry .gitignore
+55 silly gunzTarPerm extractEntry wscript
+56 silly gunzTarPerm extractEntry CHANGELOG
+57 silly gunzTarPerm extractEntry .gitmodules
+58 silly gunzTarPerm extractEntry t.js
+59 silly gunzTarPerm extractEntry mysql-test-long.js
+60 silly gunzTarPerm extractEntry mysql-test.js
+61 silly gunzTarPerm extractEntry .npmignore
+62 silly gunzTarPerm extractEntry db-mysql.js
+63 silly gunzTarPerm extractEntry mysql-test-long-number.js
+64 silly gunzTarPerm extractEntry package.json
+65 silly gunzTarPerm extractEntry tests-settings.json
+66 silly gunzTarPerm extractEntry tests-db.js
+67 silly gunzTarPerm extractEntry mysql-test-sync-update.js
+68 silly gunzTarPerm extractEntry mysql-test-async.js
+69 silly gunzTarPerm extractEntry src/mysql.cc
+70 silly gunzTarPerm extractEntry src/result.h
+71 silly gunzTarPerm extractEntry src/query.cc
+72 silly gunzTarPerm extractEntry src/mysql_bindings.cc
+73 silly gunzTarPerm extractEntry src/connection.cc
+74 silly gunzTarPerm extractEntry src/query.h
+75 silly gunzTarPerm extractEntry src/connection.h
+76 silly gunzTarPerm extractEntry src/result.cc
+77 silly gunzTarPerm extractEntry src/mysql.h
+78 silly gunzTarPerm extractEntry doc/api.html
+79 silly gunzTarPerm extractEntry doc/changelog.html
+80 silly gunzTarPerm extractEntry doc/index.html
+81 silly gunzTarPerm extractEntry lib/node-db/binding.h
+82 silly gunzTarPerm extractEntry lib/node-db/events.h
+83 silly gunzTarPerm extractEntry lib/node-db/exception.cc
+84 silly gunzTarPerm extractEntry lib/node-db/README.md
+85 silly gunzTarPerm extractEntry lib/node-db/tests.js
+86 silly gunzTarPerm extractEntry lib/node-db/result.h
+87 silly gunzTarPerm extractEntry lib/node-db/exception.h
+88 silly gunzTarPerm extractEntry lib/node-db/events.cc
+89 silly gunzTarPerm extractEntry lib/node-db/query.cc
+90 silly gunzTarPerm extractEntry lib/node-db/binding.cc
+91 silly gunzTarPerm extractEntry lib/node-db/connection.cc
+92 silly gunzTarPerm extractEntry lib/node-db/query.h
+93 silly gunzTarPerm extractEntry lib/node-db/connection.h
+94 silly gunzTarPerm extractEntry lib/node-db/node_defs.h
+95 silly gunzTarPerm extractEntry lib/node-db/result.cc
+96 info preinstall db-mysql@0.7.6
+97 silly install resolved []
+98 verbose about to build /Users/akshayravikumar/Documents/hotw/node_modules/db-mysql
+99 info build /Users/akshayravikumar/Documents/hotw/node_modules/db-mysql
+100 verbose linkStuff [ false,
+100 verbose linkStuff   false,
+100 verbose linkStuff   false,
+100 verbose linkStuff   '/Users/akshayravikumar/Documents/hotw/node_modules' ]
+101 info linkStuff db-mysql@0.7.6
+102 verbose linkBins db-mysql@0.7.6
+103 verbose linkMans db-mysql@0.7.6
+104 verbose rebuildBundles db-mysql@0.7.6
+105 info install db-mysql@0.7.6
+106 verbose unsafe-perm in lifecycle false
+107 info db-mysql@0.7.6 Failed to exec install script
+108 verbose unlock done using /Users/akshayravikumar/.npm/_locks/db-mysql-79acdcc8b2cb67c2.lock for /Users/akshayravikumar/Documents/hotw/node_modules/db-mysql
+109 verbose stack Error: db-mysql@0.7.6 install: `node-waf configure build`
+109 verbose stack Exit status 127
+109 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:212:16)
+109 verbose stack     at EventEmitter.emit (events.js:98:17)
+109 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:14:12)
+109 verbose stack     at ChildProcess.emit (events.js:98:17)
+109 verbose stack     at maybeClose (child_process.js:756:16)
+109 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:823:5)
+110 verbose pkgid db-mysql@0.7.6
+111 verbose cwd /Users/akshayravikumar/Documents/hotw
+112 error Darwin 14.0.0
+113 error argv "node" "/usr/local/bin/npm" "install" "db-mysql"
+114 error node v0.10.33
+115 error npm  v2.1.14
+116 error code ELIFECYCLE
+117 error db-mysql@0.7.6 install: `node-waf configure build`
+117 error Exit status 127
+118 error Failed at the db-mysql@0.7.6 install script 'node-waf configure build'.
+118 error This is most likely a problem with the db-mysql package,
+118 error not with npm itself.
+118 error Tell the author that this fails on your system:
+118 error     node-waf configure build
+118 error You can get their info via:
+118 error     npm owner ls db-mysql
+118 error There is likely additional logging output above.
+119 verbose exit [ 1, true ]
+120 verbose unbuild node_modules/db-mysql
+121 info preuninstall db-mysql@0.7.6
+122 verbose unsafe-perm in lifecycle false
+123 info uninstall db-mysql@0.7.6
+124 verbose unbuild rmStuff db-mysql@0.7.6 from /Users/akshayravikumar/Documents/hotw/node_modules
+125 info postuninstall db-mysql@0.7.6
+126 verbose gentlyRm vacuuming /Users/akshayravikumar/Documents/hotw/node_modules/db-mysql
+127 silly gentlyRm purging /Users/akshayravikumar/Documents/hotw/node_modules/db-mysql
+128 silly gentlyRm quitting because other entries in /Users/akshayravikumar/Documents/hotw/node_modules

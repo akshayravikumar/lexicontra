@@ -3,7 +3,11 @@ html, body {
     width: 100%;
     margin: 0;
     padding: 0;
-    background-image: url("/images/background.png");
+    background-color: #00ff00;
+}
+
+.titlePage {
+    background-color: white;
 }
 
 .title {
@@ -13,17 +17,26 @@ html, body {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 500;
     font-size:xx-large;
-    color:#800000;
+    color:black;
     font-size: 600%;
     display: inline;
 
 }
 
+.vcenter {
+    vertical-align: middle;
+}
+
 .labelForm {
     font-size:x-large;
 }
+.wordForm {
+    bottom:2%;
+}
 
-
+.letters {
+    font-size:;
+}
 .titleWrapper {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
